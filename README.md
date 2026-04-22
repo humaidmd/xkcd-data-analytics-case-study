@@ -53,8 +53,8 @@ XKCD API
 
 Cloud Composer orchestrates ingestion, refresh, and data quality checks.
 ```
+<img width="1500" height="844" alt="image" src="https://github.com/user-attachments/assets/2162edc3-ddb1-46b7-ad95-c164757c190c" />
 
-[Insert Screenshot: High-level architecture]
 [What it should show: XKCD API flowing into raw_xkcd_comics, then stg_xkcd_comics, then dim_comic and fact_comic_metrics, with Cloud Composer orchestration and a quality-check branch]
 
 ---
