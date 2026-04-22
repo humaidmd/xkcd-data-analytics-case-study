@@ -716,6 +716,5 @@ If you are reviewing this repository, the best places to start are:
 2. the DAG file
 3. the staging and model SQL
 4. the quality checks
-5. the screenshots in `docs/`
 
 ---
