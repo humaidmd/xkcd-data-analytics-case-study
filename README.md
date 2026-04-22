@@ -610,6 +610,7 @@ Result:
 * `avg_views = 5010.79`
 * `avg_review_score = 5.50`
 * `total_cost_eur = 197180.0`
+* `avg_cost_eur = 60.99`
 
 ### Top comics by views
 
