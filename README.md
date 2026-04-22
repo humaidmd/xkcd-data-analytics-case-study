@@ -222,10 +222,6 @@ Main Python loader for fetching comics and writing raw rows into BigQuery.
 
 Composer-friendly version of the loader used by Airflow tasks.
 
-[Insert Screenshot: Python loader file]
-
-[What it should show: xkcd_loader.py with logic around max comic ID, latest comic lookup, and incremental fetch]
-
 ---
 
 ## Staging layer
@@ -460,11 +456,7 @@ Interpretation:
 
 This pattern made it easy to automate validation inside the DAG.
 
-[Insert Screenshot: Quality check query output]
-
 <img width="1918" height="634" alt="image" src="https://github.com/user-attachments/assets/aa795c1b-427e-41c1-9cd2-921d6c49a08e" />
-
-[What it should show: one or more checks returning check_name and failed_records]
 
 ---
 
@@ -546,17 +538,12 @@ Create these datasets in the target GCP project:
 
 Create `raw_xkcd_comics` in the `xkcd_raw` dataset using your final schema.
 
-> [TODO: Add the exact table creation method here if you want to show it]
-> For example: BigQuery SQL, notebook, or script path used in your repo
-
 ### 3. Run the historical load
 
 Run the ingestion code once to:
 
 * test a single comic insert
 * then backfill all available comics into `raw_xkcd_comics`
-
-> [TODO: Add the exact script or notebook path used for historical load]
 
 ### 4. Build the staging view
 
