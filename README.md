@@ -92,8 +92,7 @@ Cloud Composer orchestrates ingestion, refresh, and data quality checks.
 * `presentation/`
   Final presentation deck used for the case study submission
 
-[Insert Screenshot: Repository structure]
-[What it should show: top-level folders such as src, dags, sql, checks, docs, and presentation]
+<img width="1010" height="484" alt="image" src="https://github.com/user-attachments/assets/b0789141-3ebf-4be6-8fa8-e1585cf2f53f" />
 
 ---
 
@@ -177,8 +176,7 @@ Why I kept this layer simple:
 * it makes debugging easier
 * it gives a clean starting point for downstream transformations
 
-[Insert Screenshot: Raw table in BigQuery]
-[What it should show: raw_xkcd_comics table and selected columns such as comic_id, title, fetched_at, source_url, and raw_json]
+<img width="1913" height="854" alt="image" src="https://github.com/user-attachments/assets/ac211910-9b9d-4ff7-bd90-c954bc18eaa3" />
 
 ---
 
@@ -225,6 +223,7 @@ Main Python loader for fetching comics and writing raw rows into BigQuery.
 Composer-friendly version of the loader used by Airflow tasks.
 
 [Insert Screenshot: Python loader file]
+
 [What it should show: xkcd_loader.py with logic around max comic ID, latest comic lookup, and incremental fetch]
 
 ---
@@ -278,8 +277,7 @@ This is where the raw API payload becomes clean and predictable enough for analy
 
 * `sql/stg_xkcd_comics.sql`
 
-[Insert Screenshot: Staging SQL]
-[What it should show: stg_xkcd_comics SQL with deduplication and title_letter_count logic]
+<img width="1914" height="863" alt="image" src="https://github.com/user-attachments/assets/66c9b83d-055d-4e6e-a064-50a1870fe003" />
 
 ---
 
@@ -340,8 +338,7 @@ I kept the model intentionally simple:
 
 This was easier to explain and query than one wide reporting table, and it fit the case study scope better than a more elaborate warehouse design.
 
-[Insert Screenshot: ER diagram / data model]
-[What it should show: raw_xkcd_comics, stg_xkcd_comics, dim_comic, and fact_comic_metrics, with the join on comic_id]
+<img width="1294" height="844" alt="image" src="https://github.com/user-attachments/assets/b7c0c4c9-0b5f-4fba-a763-d0986b011628" />
 
 ---
 
@@ -379,9 +376,6 @@ SELECT
   title_letter_count * 5 AS cost_eur
 FROM `xkcd-case-study-493421.xkcd_analytics.stg_xkcd_comics`;
 ```
-
-> Replace the exact expression above if your final SQL differs.
-> The important point is that the metrics are deterministic and reproducible.
 
 ---
 
@@ -467,6 +461,9 @@ Interpretation:
 This pattern made it easy to automate validation inside the DAG.
 
 [Insert Screenshot: Quality check query output]
+
+<img width="1918" height="634" alt="image" src="https://github.com/user-attachments/assets/aa795c1b-427e-41c1-9cd2-921d6c49a08e" />
+
 [What it should show: one or more checks returning check_name and failed_records]
 
 ---
@@ -515,9 +512,6 @@ That behavior was deliberate. It makes it obvious that no new source data was av
 ### `bq_sql_runner.py`
 
 This helper is used to run SQL files from the `sql/` and `checks/` folders. It also fails the task if any quality check returns `failed_records > 0`.
-
-[Insert Screenshot: Cloud Composer DAG]
-[What it should show: xkcd_pipeline_dag with tasks poll_and_load_raw, refresh_staging, refresh_dim, refresh_fact, and run_all_checks]
 
 ---
 
@@ -605,8 +599,7 @@ You can either:
 * wait for the Monday / Wednesday / Friday schedule
 * or trigger the DAG manually from the Airflow UI
 
-[Insert Screenshot: BigQuery datasets and tables]
-[What it should show: xkcd_raw and xkcd_analytics datasets with raw_xkcd_comics, stg_xkcd_comics, dim_comic, and fact_comic_metrics]
+<img width="1839" height="535" alt="image" src="https://github.com/user-attachments/assets/fc2466fa-39dd-4748-ac22-ebbb11e4a1f4" />
 
 ---
 
@@ -679,11 +672,9 @@ Examples:
 * 1 to 10 — 9261 views — €10 cost — 926.1 views per euro
 * X — 4527 views — €5 cost — 905.4 views per euro
 
-[Insert Screenshot: KPI query output]
-[What it should show: total_comics, avg_views, avg_review_score, and total_cost_eur result from BigQuery]
+<img width="1918" height="773" alt="image" src="https://github.com/user-attachments/assets/51894898-01af-4fb9-a14d-52e50e41dc76" />
 
-[Insert Screenshot: Business insights query output]
-[What it should show: either top comics by views or best value-for-money query results]
+<img width="1865" height="747" alt="image" src="https://github.com/user-attachments/assets/25a60846-5f58-4cc3-91fb-13e0fe396e40" />
 
 ---
 
